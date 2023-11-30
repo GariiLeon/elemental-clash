@@ -95,9 +95,14 @@ window.addEventListener("load", async function () {
 
   function updateStatistics() {
     const statistics = rps.get();
-    const rocks = (statistics.rocks * 100) / statistics.total;
-    const papers = (statistics.papers * 100) / statistics.total;
-    const scissors = (statistics.scissors * 100) / statistics.total;
+    const rocks =
+      statistics.rocks == 0 ? 0 : (statistics.rocks * 100) / statistics.total;
+    const papers =
+      statistics.papers == 0 ? 0 : (statistics.papers * 100) / statistics.total;
+    const scissors =
+      statistics.scissors == 0
+        ? 0
+        : (statistics.scissors * 100) / statistics.total;
     document.getElementById("w-rocks").innerHTML =
       Math.round(rocks * 100) / 100 + "%";
     document.getElementById("w-papers").innerHTML =
