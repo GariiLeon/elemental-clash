@@ -13,7 +13,6 @@ var rps = {
     rps.cache.match(rps.dbname).then(async (r) => {
       if (r == undefined) {
         rps.db = new SQL.Database();
-        console.log(rps.db);
         rps.db.run(`CREATE TABLE win_statistic (
             rocks INTEGER NOT NULL,
             papers INTEGER NOT NULL,
