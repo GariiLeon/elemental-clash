@@ -86,7 +86,7 @@ window.addEventListener("load", async function () {
       game.width * 0.5,
       game.height * 0.5 - 20
     );
-    rpc.update(game.theWinner.toLowerCase());
+    rps.update(game.theWinner.toLowerCase());
     updateStatistics();
     game = new Game(game.width, game.height);
     startButton.removeAttribute("disabled");
@@ -94,7 +94,7 @@ window.addEventListener("load", async function () {
   }
 
   function updateStatistics() {
-    const statistics = rpc.get();
+    const statistics = rps.get();
     const rocks = (statistics.rocks * 100) / statistics.total;
     const papers = (statistics.papers * 100) / statistics.total;
     const scissors = (statistics.scissors * 100) / statistics.total;
@@ -107,7 +107,7 @@ window.addEventListener("load", async function () {
   }
   var updateStatInterval = setInterval(fnUpdateStatInterval, 10);
   function fnUpdateStatInterval() {
-    if (rpc.db) {
+    if (rps.db) {
       updateStatistics();
       clearInterval(updateStatInterval);
     }
