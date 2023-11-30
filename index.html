@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.9.0/sql-wasm.js"
+      integrity="sha512-PAyD/84QEfxE1X/H3RDJY9kqXtJObyGq6qA93+LnkMNWdTLHjcTKHsDOcz6Y5xAdsaMGItRP5vNs4vtj3/FRuw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <title>Rock Paper Scissors Simulator</title>
+  </head>
+  <body>
+    <div class="arena">
+      <canvas id="battleContainer"></canvas>
+    </div>
+
+    <div class="control">
+      <div class="win-statistic">
+        <h5 style="text-align: center; margin-bottom: 5px">Win percentage</h5>
+        <div class="statistic">Rocks : <span id="w-rocks">%</span></div>
+        <div class="statistic">Papers : <span id="w-papers">%</span></div>
+        <div class="statistic">Scissors : <span id="w-scissors">%</span></div>
+      </div>
+      <div class="range-container">
+        <input
+          type="range"
+          name="range"
+          id="range"
+          min="1"
+          max="20"
+          value="5"
+        />
+        <label id="rangeLabel" for="range">5</label>
+      </div>
+      <button
+        id="startBtn"
+        class="button button--pipaluk button--inverted button--round-l button--text-thick button--text-upper"
+      >
+        Start Battle
+      </button>
+    </div>
+    <img id="paper" src="images/paper.png" />
+    <img id="rock" src="images/rock.png" />
+    <img id="scissors" src="images/scissors.png" />
+
+    <script type="module" src="scripts.js"></script>
+  </body>
+</html>
