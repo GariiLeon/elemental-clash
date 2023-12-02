@@ -8,8 +8,8 @@ class PlayObjects {
   constructor(cellSize) {
     this.width = cellSize;
     this.height = cellSize;
-    this.maxSpeed = 3;
-    this.maxForce = 0.06;
+    this.maxSpeed = 1.5;
+    this.maxForce = 0.1;
   }
 
   async update(nearestTarget, nearestTargeter, theObject) {
@@ -63,7 +63,7 @@ class PlayObjects {
 
       // See if the object is running towards the wall and change velocity accordingly
       let predictionToWall = theObject.velocity.clone();
-      predictionToWall.setMag(6);
+      predictionToWall.setMag(this.width / 2);
       predictionToWall.add(theObject.position);
       if (
         predictionToWall.x <= 0 ||
@@ -122,6 +122,15 @@ class PlayObjects {
     const dx = obj2.x - obj1.x;
     const dy = obj2.y - obj1.y;
     return Math.sqrt(dx * dx + dy * dy);
+  }
+
+  compareWithInitialPosition(objPlay) {
+    return (
+      objPlay.initialX < objPlay.position.x + this.width &&
+      objPlay.initialX + this.width > objPlay.position.x &&
+      objPlay.initialY < objPlay.position.y + this.width &&
+      objPlay.initialY + this.width > objPlay.position.y
+    );
   }
 
   arrive(aPlayObject, target) {
@@ -201,12 +210,7 @@ export class Paper extends PlayObjects {
   }
 
   compareWithInitialPosition() {
-    return (
-      this.initialX < this.position.x + 12 &&
-      this.initialX + 12 > this.position.x &&
-      this.initialY < this.position.y + 12 &&
-      this.initialY + 12 > this.position.y
-    );
+    return super.compareWithInitialPosition(this);
   }
 }
 
@@ -239,12 +243,7 @@ export class Rock extends PlayObjects {
   }
 
   compareWithInitialPosition() {
-    return (
-      this.initialX < this.position.x + 12 &&
-      this.initialX + 12 > this.position.x &&
-      this.initialY < this.position.y + 12 &&
-      this.initialY + 12 > this.position.y
-    );
+    return super.compareWithInitialPosition(this);
   }
 }
 
@@ -277,11 +276,6 @@ export class Scissor extends PlayObjects {
   }
 
   compareWithInitialPosition() {
-    return (
-      this.initialX < this.position.x + 12 &&
-      this.initialX + 12 > this.position.x &&
-      this.initialY < this.position.y + 12 &&
-      this.initialY + 12 > this.position.y
-    );
+    return super.compareWithInitialPosition(this);
   }
 }

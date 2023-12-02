@@ -126,7 +126,7 @@ class Game {
     this.theWinner = "";
     this.width = width;
     this.height = height;
-    this.cellSize = 16;
+    this.cellSize = 20;
     this.gridSize = this.width / this.cellSize;
     this.numberOfEachObjects = 0;
     this.papers = [];
